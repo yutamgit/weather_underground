@@ -11,6 +11,10 @@ module WeatherUnderground
       @apikey = apikey
     end
 
+    def current_conditions(location)
+      make_request url_with_key + "/conditions/q/%s.json" % URI.escape(location)
+    end
+    
     def forecast(location)
       make_request url_with_key + "/forecast/conditions/q/%s.json" % URI.escape(location)
     end
