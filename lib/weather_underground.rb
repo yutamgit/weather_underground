@@ -30,7 +30,7 @@ module WeatherUnderground
     private
 
     def make_request(uri)
-      JSON.parse RestClient.get(uri)
+      JSON.parse RestClient::Resource.new(uri, :timeout => 5, :open_timeout => 5).get
     end
 
     def url_with_key
